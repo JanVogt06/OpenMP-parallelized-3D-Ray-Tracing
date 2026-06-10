@@ -1,10 +1,10 @@
-#include "intersect.h"
+#include "triangle.hpp"
 
-int ray_triangle_intersect(Vec3 C, Vec3 D, const Triangle *tri, Hit *out) {
+int Triangle::intersect(Vec3 C, Vec3 D, Hit *out) const {
     const double eps = 1e-6;
 
-    Vec3 E1 = vec3_sub(tri->T2, tri->T1);
-    Vec3 E2 = vec3_sub(tri->T3, tri->T1);
+    Vec3 E1 = vec3_sub(T2, T1);
+    Vec3 E2 = vec3_sub(T3, T1);
     Vec3 U  = vec3_cross(D, E2);
     double beta = vec3_dot(E1, U);
 
@@ -13,7 +13,7 @@ int ray_triangle_intersect(Vec3 C, Vec3 D, const Triangle *tri, Hit *out) {
         return 0;
 
     double beta_inv = 1.0 / beta;
-    Vec3 V = vec3_sub(C, tri->T1);
+    Vec3 V = vec3_sub(C, T1);
 
     double lambda2 = vec3_dot(V, U) * beta_inv;
     if (lambda2 < 0.0 || lambda2 > 1.0)
@@ -29,6 +29,6 @@ int ray_triangle_intersect(Vec3 C, Vec3 D, const Triangle *tri, Hit *out) {
 
     out->alpha  = alpha;
     out->normal = vec3_normalize(vec3_cross(E1, E2));
-    out->color  = tri->color;
+    out->color  = color;
     return 1;
 }
