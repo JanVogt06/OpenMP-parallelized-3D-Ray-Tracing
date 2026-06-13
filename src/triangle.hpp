@@ -14,5 +14,5 @@ struct Triangle {
     /* Ray-triangle intersection via the Möller–Trumbore algorithm.
      * Ray is C + alpha*D (D need not be normalized).
      * On a valid hit, fills *out and returns 1; otherwise returns 0. */
-    int intersect(Vec3 C, Vec3 D, Hit *out) const;
+    int intersect(const Vec3& C, const Vec3& D, Hit *out) const;
 };

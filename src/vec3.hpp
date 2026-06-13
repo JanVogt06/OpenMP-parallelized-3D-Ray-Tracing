@@ -10,6 +10,7 @@ inline Vec3 vec3(double x, double y, double z) { return {x, y, z}; }
 inline Vec3 vec3_add(Vec3 a, Vec3 b)   { return {a.x+b.x, a.y+b.y, a.z+b.z}; }
 inline Vec3 vec3_sub(Vec3 a, Vec3 b)   { return {a.x-b.x, a.y-b.y, a.z-b.z}; }
 inline Vec3 vec3_scale(Vec3 a, double k) { return {a.x*k, a.y*k, a.z*k}; }
+inline Vec3 vec3_multiply(Vec3 a, Vec3 b) { return {a.x*b.x, a.y*b.y, a.z*b.z}; }
 
 inline double vec3_dot(Vec3 a, Vec3 b) {
     return a.x*b.x + a.y*b.y + a.z*b.z;

@@ -1,6 +1,6 @@
 #include "triangle.hpp"
 
-int Triangle::intersect(Vec3 C, Vec3 D, Hit *out) const {
+int Triangle::intersect(const Vec3& C, const Vec3& D, Hit *out) const {
     const double eps = 1e-6;
 
     Vec3 E1 = vec3_sub(T2, T1);
