@@ -24,3 +24,22 @@ PPM output) and was used as the specification for the C++ port.
 The STL loader (`src/stl_loader.hpp` / `src/stl_loader.cpp`) was developed with the
 assistance of an AI coding tool (Claude by Anthropic), as permitted by the
 project guidelines.
+
+We identified the triangle intersection loop in `Scene::trace` as a parallelization
+candidate. Since we were unsure how to implement an OpenMP reduction over a custom
+struct, we used AI assistance (Claude by Anthropic) to figure out the syntax and
+approach. The implementation was done by us.
+
+However, benchmarking revealed that parallelizing `Scene::trace` with OpenMP is
+counterproductive for typical scene sizes. With a 358-triangle STL file and 100,000
+trace calls, the results were:
+
+| | Time |
+|---|---|
+| Without OMP | 212 ms (2.13 µs/trace) |
+| With OMP | 1387 ms (13.87 µs/trace) |
+
+The thread management and reduction synchronization overhead outweighs the benefit
+at this triangle count. OMP in `trace` would only pay off for scenes with significantly
+more triangles. The parallelization was therefore removed from `Scene::trace` and
+applied at the render loop level instead (one thread per pixel).
