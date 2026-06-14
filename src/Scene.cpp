@@ -2,7 +2,7 @@
 // Created by koellman on 13.06.26.
 //
 
-#include "Scene.h"
+#include "Scene.hpp"
 
 void Scene::init() {
     triangles = {};

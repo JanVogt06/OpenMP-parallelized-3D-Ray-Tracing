@@ -1,5 +1,4 @@
-#ifndef OPENMP_PARALLELIZED_3D_RAY_TRACING_SOURCE_H
-#define OPENMP_PARALLELIZED_3D_RAY_TRACING_SOURCE_H
+#pragma once
 #include "triangle.hpp"
 #include <vector>
 
@@ -12,6 +11,3 @@ public:
 
     void init();
 };
-
-
-#endif //OPENMP_PARALLELIZED_3D_RAY_TRACING_SOURCE_H

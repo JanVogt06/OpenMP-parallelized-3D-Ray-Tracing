@@ -43,3 +43,18 @@ The thread management and reduction synchronization overhead outweighs the benef
 at this triangle count. OMP in `trace` would only pay off for scenes with significantly
 more triangles. The parallelization was therefore removed from `Scene::trace` and
 applied at the render loop level instead (one thread per pixel).
+
+## Render benchmark (render-loop parallelization)
+
+Measured render time (camera + ray casting + shading only; STL loading, PPM
+output and PNG conversion are excluded). Scene: `given_example/test.stl`
+(358 triangles) at 2000×2000 resolution (4,000,000 rays).
+
+| | Time | Speedup |
+|---|---|---|
+| Serial (no OpenMP) | 4065 ms | 1.0× |
+| Parallel (OpenMP)  | 794 ms  | 5.1× |
+
+The render loop is parallelized at row granularity with
+`#pragma omp parallel for schedule(dynamic)`. Each pixel writes to a distinct
+index in the output buffer, so no reduction or synchronization is required.
