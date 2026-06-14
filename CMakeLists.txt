@@ -11,6 +11,8 @@ add_executable(raytracer
     src/stl_loader.cpp
     src/triangle.cpp
         src/Scene.cpp
+        src/write_ppm.cpp
+        src/write_ppm.hpp
 )
 
 target_include_directories(raytracer PRIVATE src)
