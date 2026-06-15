@@ -86,9 +86,10 @@ static void render(int width,
     }
 }
 
-int main() {
-    const int   width    = 2000;
-    const int   height   = 2000;
+int main(int argc, char *argv[]) {
+    int width  = argc > 1 ? std::atoi(argv[1]) : 2000;
+    int height = argc > 2 ? std::atoi(argv[2]) : 2000;
+
     const char *stl_file = "../given_example/test.stl";
     const Vec3  cam_pos  = vec3(20, -20, 10);
     const Vec3  lookat   = vec3(0, 0, 3);
