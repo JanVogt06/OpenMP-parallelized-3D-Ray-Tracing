@@ -46,6 +46,11 @@
 build/
 Build/
 build-*/
+cmake-build-*/
+
+# Project-specific binaries
+raytracer_bench
+raytracer
 
 # CMake generated files
 CMakeFiles/
