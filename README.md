@@ -64,8 +64,6 @@ AMD Ryzen 9 7900 (12 Kerne / 24 Threads). Szene: `given_example/test.stl` (358 D
 Gemessen nur die Render-Schleife (ohne STL-Laden, PPM-Ausgabe, PNG-Konvertierung),
 Median aus 3 Läufen. S(p) = T(1)/T(p), E(p) = S(p)/p.
 
-
-
 ### a), b) Laufzeiten T(p), Speedup S(p) und Effizienz E(p)
 
 Die Werte für a) und b) sind aus Gründen der Übersicht in einer gemeinsamen Tabelle
@@ -105,8 +103,8 @@ S(p) = T(1)/T(p), E(p) = S(p)/p.
 ### c) Speedup-Plot und Diskussion
 ![Speedup-Plot](speedup_plot.png)
 
-Bis p = 8 (ein Thread pro physischem Kern) folgt der Speedup nahezu der Ideallinie —
-die Render-Schleife ist "embarrassingly parallel" ohne Synchronisationsoverhead. Danach
+Bis p = 8 (ein Thread pro physischem Kern) folgt der Speedup nahezu der Ideallinie.
+Die Render-Schleife ist "embarrassingly parallel" ohne Synchronisationsoverhead. Danach
 flacht die Kurve ab. Zwei Effekte sind dafür verantwortlich:
 
 1. **SMT-Sättigung**: Die Threads 9–24 teilen sich physische Kerne und konkurrieren um
